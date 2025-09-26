@@ -69,7 +69,7 @@ export default function ViewAppointments() {
                   className="grid grid-cols-6 mt-3 bg-primaryLight/15 rounded-xl p-3"
                 >
                   <p>{appt._id}</p>
-                  <p>{appt.medicalDepartment.concat(", ")}</p>
+                  <p>{appt.medicalDepartment.join(", ")}</p>
                   <p>
                     {
                       dayjs(appt.schedule)
