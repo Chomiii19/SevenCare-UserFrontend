@@ -68,7 +68,7 @@ export default function ViewAppointments() {
                   key={appt._id}
                   className="grid grid-cols-6 mt-3 bg-primaryLight/15 rounded-xl p-3"
                 >
-                  <p>{appt._id}</p>
+                  <p title={appt._id}>{appt._id.slice(0, 13) + "..."}</p>
                   <p>{appt.medicalDepartment.join(", ")}</p>
                   <p>
                     {
