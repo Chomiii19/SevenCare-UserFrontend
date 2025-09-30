@@ -63,53 +63,59 @@ export default function ViewAppointments() {
             {loading ? (
               <Loading />
             ) : (
-              appointments.map((appt) => (
-                <div
-                  key={appt._id}
-                  className="grid grid-cols-6 mt-3 bg-primaryLight/15 rounded-xl p-3"
-                >
-                  <p title={appt._id}>{appt._id.slice(0, 13) + "..."}</p>
-                  <p>{appt.medicalDepartment.join(", ")}</p>
-                  <p>
-                    {
-                      dayjs(appt.schedule)
-                        .format("MM/DD/YY, h:mm A")
-                        .split(", ")[0]
-                    }
-                  </p>
-                  <p>
-                    {
-                      dayjs(appt.schedule)
-                        .format("MM/DD/YY, h:mm A")
-                        .split(", ")[1]
-                    }
-                  </p>
-                  <p
-                    className={`font-bold ${
-                      appt.status === "Pending"
-                        ? "text-primary"
-                        : appt.status === "Approved"
-                        ? "text-green-400"
-                        : "text-red-500"
-                    }`}
+              appointments
+                .sort(
+                  (a, b) =>
+                    new Date(b.schedule).getTime() -
+                    new Date(a.schedule).getTime(),
+                )
+                .map((appt) => (
+                  <div
+                    key={appt._id}
+                    className="grid grid-cols-6 mt-3 bg-primaryLight/15 rounded-xl p-3"
                   >
-                    {appt.status}
-                  </p>
-                  <div className="flex gap-2 items-center">
-                    <img src="/assets/icons/chat.png" alt="" />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedAppointment(appt._id);
-                        setShowDeleteAppointmentModal(true);
-                      }}
-                      className="cursor-pointer"
+                    <p title={appt._id}>{appt._id.slice(0, 13) + "..."}</p>
+                    <p>{appt.medicalDepartment.join(", ")}</p>
+                    <p>
+                      {
+                        dayjs(appt.schedule)
+                          .format("MM/DD/YY, h:mm A")
+                          .split(", ")[0]
+                      }
+                    </p>
+                    <p>
+                      {
+                        dayjs(appt.schedule)
+                          .format("MM/DD/YY, h:mm A")
+                          .split(", ")[1]
+                      }
+                    </p>
+                    <p
+                      className={`font-bold ${
+                        appt.status === "Pending"
+                          ? "text-primary"
+                          : appt.status === "Approved"
+                          ? "text-green-400"
+                          : "text-red-500"
+                      }`}
                     >
-                      <Trash2 className="text-red-500" />
-                    </button>
+                      {appt.status}
+                    </p>
+                    <div className="flex gap-2 items-center">
+                      <img src="/assets/icons/chat.png" alt="" />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedAppointment(appt._id);
+                          setShowDeleteAppointmentModal(true);
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <Trash2 className="text-red-500" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))
+                ))
             )}
           </section>
         </form>
