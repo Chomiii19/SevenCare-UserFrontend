@@ -20,6 +20,7 @@ export interface IUser {
   address: string;
   email: string;
   phoneNumber: string;
+  role: string;
   password: string;
 }
 
