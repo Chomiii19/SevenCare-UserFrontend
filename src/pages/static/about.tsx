@@ -1,39 +1,66 @@
 import Footer2 from "../../components/Footer2";
-import Header from "../../components/Header";
-import { whyChooseUs } from "../../data/data";
 
 export default function About() {
   return (
     <main className="flex flex-col w-full h-screen font-roboto bg-bg-color">
-      <Header active="about" />
-      <section className="flex-1 flex w-full flex-row justify-center items-center gap-14 relative">
-        <div className="flex flex-col items-center absolute top-18">
+      <section className="flex-1 flex flex-col w-full justify-center items-center gap-14 relative">
+        <img
+          src="/assets/images/clinic.png"
+          alt="clinic"
+          className="absolute w-full h-full object-cover opacity-30"
+        />
+
+        <div className="flex flex-col items-center z-10">
           <h1 className="text-zinc-950 font-bold text-2xl">
             About <span className="text-primary">Us</span>
           </h1>
-          <div className="h-1  w-1/2 bg-primary mt-2" />
+          <div className="h-2  w-2/3 bg-[#283DA7] mt-2 rounded-full" />
         </div>
 
-        <aside className="flex-col flex gap-2 justify-center items-center w-1/3 relative">
-          <img src="/assets/images/doctor.png" className="w-76 z-10" />
-          <div className="w-full py-2 bg-[#53C32A] rounded-lg text-zinc-50 h-16 absolute -bottom-3" />
-        </aside>
+        <div className="grid grid-cols-2 grid-rows-2 justify-center z-10 w-2/3 gap-8">
+          <article className="flex flex-col items-center gap-2">
+            <img src="/assets/icons/eye.png" alt="eye" className="w-[100px]" />
+            <h2 className="font-bold text-lg">VISION</h2>
+            <p className="text-center w-2/3">
+              Our Vision is to be world class excellence in providing health and
+              laboratory service to contribute to the well-being of the
+              community.
+            </p>
+          </article>
 
-        <div className="flex flex-col justify-center">
-          <h2 className="mb-6 font-bold text-xl">Why Choose Us?</h2>
+          <article className="flex flex-col items-center gap-2">
+            <img
+              src="/assets/icons/target.png"
+              alt="target"
+              className="w-[60px]"
+            />
+            <h2 className="font-bold text-lg">MISSION</h2>
+            <p className="text-center w-2/3">
+              To serve the community by providing quality laboratory services
+              utilized the preventing diagnostic and management of disease.
+            </p>
+          </article>
 
-          <ol className="flex flex-col gap-3.5">
-            {whyChooseUs.map((text, i) => (
-              <li key={i} className="flex-row flex items-center">
-                <img
-                  src="/assets/icons/check.png"
-                  alt="check-icon"
-                  className="w-8"
-                />
-                <p>{text}</p>
-              </li>
-            ))}
-          </ol>
+          <article className="flex flex-col items-center gap-2">
+            <img src="/assets/icons/goal.png" alt="goal" className="w-[60px]" />
+            <h2 className="font-bold text-lg">GOAL</h2>
+            <p className="text-center w-2/3">
+              To provide quality and affordable health services for everyone.
+            </p>
+          </article>
+
+          <article className="flex flex-col items-center gap-2">
+            <img
+              src="/assets/icons/visual.png"
+              alt="visual"
+              className="w-[60px]"
+            />
+            <h2 className="font-bold text-lg">VISUAL</h2>
+            <p className="text-center w-2/3">
+              CARE and RESPECT we serve our clients with utmost care and respect
+              as we cater to their diagnostic needs.
+            </p>
+          </article>
         </div>
       </section>
       <Footer2 />

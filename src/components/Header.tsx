@@ -10,9 +10,9 @@ export default function Header({ active }: { active: string }) {
   }, []);
 
   return (
-    <header className="fixed top-0 w-full flex flex-row justify-between items-center pt-2 pb-0.5 px-20 z-50 bg-bg-color">
+    <header className="fixed top-0 w-full flex flex-row justify-between items-center py-2 px-20 z-50 bg-bg-color">
       <div className="flex flex-row  items-center">
-        <img src="/assets/icons/icon.png" alt="icon" className="w-16" />
+        <img src="/assets/icons/logo.png" alt="icon" className="w-16" />
       </div>
 
       <nav className="flex flex-row items-center gap-6 text-sm font-bold">
@@ -35,7 +35,7 @@ export default function Header({ active }: { active: string }) {
               : "border-b-transparent"
           }`}
         >
-          About
+          About Us
         </Link>
         <Link
           to="/services"
@@ -68,7 +68,7 @@ export default function Header({ active }: { active: string }) {
         ) : (
           <Link
             to="/login"
-            className="bg-secondary rounded-lg py-1 px-5 text-zinc-100"
+            className="bg-[#283DA7] rounded-lg py-1 px-5 text-zinc-100"
           >
             Login
           </Link>

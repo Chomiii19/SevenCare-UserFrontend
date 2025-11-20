@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Footer from "../../components/Footer";
+import Footer2 from "../../components/Footer2";
 import CustomInput from "../../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
@@ -136,7 +136,7 @@ export default function Login() {
         </div>
       </section>
 
-      <Footer />
+      <Footer2 />
     </main>
   );
 }
