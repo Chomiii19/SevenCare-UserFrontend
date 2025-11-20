@@ -4,10 +4,12 @@ import Footer2 from "../../components/Footer2";
 export default function Services() {
   const [openConsultModal, setOpenConsultModal] = useState(false);
   const [openUltrasoundModal, setOpenUltrasoundModal] = useState(false);
+  const [openDrugTestModal, setOpenDrugTestModal] = useState(false);
 
   const handleServiceClick = (i: number) => {
     if (i === 0) setOpenConsultModal(true);
     if (i === 1) setOpenUltrasoundModal(true);
+    if (i === 2) setOpenDrugTestModal(true);
   };
 
   return (
@@ -18,6 +20,10 @@ export default function Services() {
 
       {openUltrasoundModal && (
         <UltrasoundModal setOpenUltrasoundModal={setOpenUltrasoundModal} />
+      )}
+
+      {openDrugTestModal && (
+        <DrugTestModal setOpenDrugTestModal={setOpenDrugTestModal} />
       )}
 
       <section className="flex flex-col flex-1 w-full justify-center items-center relative">
@@ -291,6 +297,36 @@ function UltrasoundModal({
             </div>
           ))}
         </div>
+      </article>
+    </div>
+  );
+}
+
+function DrugTestModal({
+  setOpenDrugTestModal,
+}: {
+  setOpenDrugTestModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  return (
+    <div
+      onClick={() => setOpenDrugTestModal(false)}
+      className="fixed inset-0 z-[100] flex justify-center items-center bg-black/40"
+    >
+      <article className="bg-white rounded-lg p-18 flex flex-col gap-2 items-center">
+        <div className="flex items-center gap-2">
+          <img
+            src="/assets/icons/fill-check.png"
+            alt=""
+            className="self-start"
+          />
+          <div className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              SHABU AND MARIJUANA TEST
+            </h3>
+            <p className="italic">For as low as: 300.00</p>
+          </div>
+        </div>
+        <p>RESULTS WILL BE RELEASED THE NEXT DAY 1:00 PM</p>
       </article>
     </div>
   );
