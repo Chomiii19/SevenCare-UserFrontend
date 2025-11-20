@@ -6,12 +6,14 @@ export default function Services() {
   const [openUltrasoundModal, setOpenUltrasoundModal] = useState(false);
   const [openDrugTestModal, setOpenDrugTestModal] = useState(false);
   const [openEnrollmentModal, setOpenEnrollmentModal] = useState(false);
+  const [openHealthCheckModal, setOpenHealthCheckModal] = useState(false);
 
   const handleServiceClick = (i: number) => {
     if (i === 0) setOpenConsultModal(true);
     if (i === 1) setOpenUltrasoundModal(true);
     if (i === 2) setOpenDrugTestModal(true);
     if (i === 3) setOpenEnrollmentModal(true);
+    if (i === 4) setOpenHealthCheckModal(true);
   };
 
   return (
@@ -30,6 +32,10 @@ export default function Services() {
 
       {openEnrollmentModal && (
         <EnrollmentModal setOpenEnrollmentModal={setOpenEnrollmentModal} />
+      )}
+
+      {openHealthCheckModal && (
+        <HealthCheckModal setOpenHealthCheckModal={setOpenHealthCheckModal} />
       )}
 
       <section className="flex flex-col flex-1 w-full justify-center items-center relative">
@@ -70,6 +76,7 @@ export default function Services() {
             <div className="flex justify-center items-center">
               <img
                 key={i}
+                onClick={() => handleServiceClick(i + 4)}
                 src={`/assets/images/service${i + 5}.png`}
                 className="w-52 cursor-pointer hover:scale-105 transition-all duration-150 ease-in-out"
               />
@@ -383,6 +390,63 @@ function EnrollmentModal({
           </header>
           <div className="flex flex-col gap-2 mt-2">
             {packageB.map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+function HealthCheckModal({
+  setOpenHealthCheckModal,
+}: {
+  setOpenHealthCheckModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const services = [
+    "Fasting Blood Sugar",
+    "Blood Urea Nitrogren (BUN)",
+    "Creatinine",
+    "Blood Uric Acid (BUA)",
+    "Total Cholersterol",
+    "Triglycerides",
+    "Good Cholesterol (HDL)",
+    "Bad Cholesterol (LDL)",
+    "SGOT/AST",
+    "SGPT/ALT",
+    "CBC",
+    "Platelet",
+    "Urinalysis",
+  ];
+
+  return (
+    <div
+      onClick={() => setOpenHealthCheckModal(false)}
+      className="fixed inset-0 z-[100] flex justify-center items-center bg-black/40"
+    >
+      <article className="bg-white rounded-lg gap-4 p-8 flex flex-col">
+        <header className="flex flex-col items-center">
+          <h3 className="text-[#4206BA] font-bold text-lg">
+            STANDARD HEALTH CHECK
+          </h3>
+          <p>For as low as : 1299.00</p>
+        </header>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3 mt-2">
+            {services.slice(0, 7).map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3 mt-2">
+            {services.slice(7, 13).map((service) => (
               <div className="flex items-center gap-2">
                 <img src="/assets/icons/fill-check.png" alt="" />
                 <p>{service}</p>
