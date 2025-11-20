@@ -5,11 +5,13 @@ export default function Services() {
   const [openConsultModal, setOpenConsultModal] = useState(false);
   const [openUltrasoundModal, setOpenUltrasoundModal] = useState(false);
   const [openDrugTestModal, setOpenDrugTestModal] = useState(false);
+  const [openEnrollmentModal, setOpenEnrollmentModal] = useState(false);
 
   const handleServiceClick = (i: number) => {
     if (i === 0) setOpenConsultModal(true);
     if (i === 1) setOpenUltrasoundModal(true);
     if (i === 2) setOpenDrugTestModal(true);
+    if (i === 3) setOpenEnrollmentModal(true);
   };
 
   return (
@@ -24,6 +26,10 @@ export default function Services() {
 
       {openDrugTestModal && (
         <DrugTestModal setOpenDrugTestModal={setOpenDrugTestModal} />
+      )}
+
+      {openEnrollmentModal && (
+        <EnrollmentModal setOpenEnrollmentModal={setOpenEnrollmentModal} />
       )}
 
       <section className="flex flex-col flex-1 w-full justify-center items-center relative">
@@ -327,6 +333,63 @@ function DrugTestModal({
           </div>
         </div>
         <p>RESULTS WILL BE RELEASED THE NEXT DAY 1:00 PM</p>
+      </article>
+    </div>
+  );
+}
+
+function EnrollmentModal({
+  setOpenEnrollmentModal,
+}: {
+  setOpenEnrollmentModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const packageA = ["Complete Blood Count", "Chest XRAY", "Urinalysis"];
+  const packageB = [
+    "Complete Blood Count",
+    "Chest XRAY",
+    "Hepa B Screening",
+    "Urinalysis",
+  ];
+
+  return (
+    <div
+      onClick={() => setOpenEnrollmentModal(false)}
+      className="fixed inset-0 z-[100] flex justify-center items-center bg-black/40"
+    >
+      <article className="bg-white rounded-lg grid grid-cols-2 gap-8 p-8">
+        <div className="flex flex-col">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PACKAGE A (FOR UCC STUDENTS)
+            </h3>
+            <p>For as low as : 500.00</p>
+          </header>
+          <div className="flex flex-col gap-2 mt-2">
+            {packageA.map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PACKAGE B (FOR UCC STUDENTS)
+            </h3>
+            <p>For as low as : 500.00</p>
+          </header>
+          <div className="flex flex-col gap-2 mt-2">
+            {packageB.map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </article>
     </div>
   );
