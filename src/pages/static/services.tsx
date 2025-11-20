@@ -8,6 +8,7 @@ export default function Services() {
   const [openEnrollmentModal, setOpenEnrollmentModal] = useState(false);
   const [openHealthCheckModal, setOpenHealthCheckModal] = useState(false);
   const [openIndividualModal, setOpenIndividualModal] = useState(false);
+  const [openPreEmploymentModal, setOpenPreEmploymentModal] = useState(false);
 
   const handleServiceClick = (i: number) => {
     if (i === 0) setOpenConsultModal(true);
@@ -16,6 +17,7 @@ export default function Services() {
     if (i === 3) setOpenEnrollmentModal(true);
     if (i === 4) setOpenHealthCheckModal(true);
     if (i === 5) setOpenIndividualModal(true);
+    if (i === 6) setOpenPreEmploymentModal(true);
   };
 
   return (
@@ -39,8 +41,15 @@ export default function Services() {
       {openHealthCheckModal && (
         <HealthCheckModal setOpenHealthCheckModal={setOpenHealthCheckModal} />
       )}
+
       {openIndividualModal && (
         <IndividualModal setOpenIndividualModal={setOpenIndividualModal} />
+      )}
+
+      {openPreEmploymentModal && (
+        <PreEmploymentModal
+          setOpenPreEmploymentModal={setOpenPreEmploymentModal}
+        />
       )}
 
       <section className="flex flex-col flex-1 w-full justify-center items-center relative">
@@ -504,6 +513,174 @@ function IndividualModal({
                 <p>{service}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+function PreEmploymentModal({
+  setOpenPreEmploymentModal,
+}: {
+  setOpenPreEmploymentModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const packageA = [
+    "Complete Blood Count",
+    "Urinalysis",
+    "Fecalysis",
+    "Chest X-Ray Pa",
+    "Physical Examination",
+    "Medical Certificate",
+  ];
+
+  const packageB = [
+    "Complete Blood Count",
+    "Urinalysis",
+    "Fecalysis",
+    "Chest X-Ray Pa",
+    "Physical Examination",
+    "Medical Certificate",
+    "Drug Test",
+  ];
+
+  const packageC = [
+    "Complete Blood Count",
+    "Urinalysis",
+    "Fecalysis",
+    "Chest X-Ray Pa",
+    "Physical Examination",
+    "Medical Certificate",
+    "Drug Test",
+    "Pregnancy Test",
+  ];
+
+  const packageD = [
+    "Complete Blood Count",
+    "Urinalysis",
+    "Fecalysis",
+    "Chest X-Ray Pa",
+    "Physical Examination",
+    "Medical Certificate",
+    "Drug Test",
+    "Hepa B Screening",
+  ];
+
+  return (
+    <div
+      onClick={() => setOpenPreEmploymentModal(false)}
+      className="fixed inset-0 z-[100] flex justify-center items-center bg-black/40"
+    >
+      <article className="bg-white rounded-lg gap-10 p-8 grid grid-cols-2 grid-rows-2">
+        <div className="flex flex-col gap-3">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PRE-EMPLOYMENT PACKAGE A
+            </h3>
+            <p className="italic">850.00 ONLY</p>
+          </header>
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="flex flex-col gap-3 mt-2">
+              {packageA.slice(0, 3).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-2">
+              {packageA.slice(3, 6).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PRE-EMPLOYMENT PACKAGE B
+            </h3>
+            <p className="italic">1,100.00 ONLY</p>
+          </header>
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="flex flex-col gap-3 mt-2">
+              {packageB.slice(0, 4).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-2">
+              {packageB.slice(4, 7).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PRE-EMPLOYMENT PACKAGE C
+            </h3>
+            <p className="italic">1,280.00 ONLY</p>
+          </header>
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="flex flex-col gap-3 mt-2">
+              {packageC.slice(0, 4).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-2">
+              {packageC.slice(4, 8).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <header className="flex flex-col items-center">
+            <h3 className="text-[#4206BA] font-bold text-lg">
+              PRE-EMPLOYMENT PACKAGE D
+            </h3>
+            <p className="italic">1,280.00 ONLY</p>
+          </header>
+          <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="flex flex-col gap-3 mt-2">
+              {packageD.slice(0, 4).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-2">
+              {packageD.slice(4, 8).map((service) => (
+                <div className="flex items-center gap-2">
+                  <img src="/assets/icons/fill-check.png" alt="" />
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </article>
