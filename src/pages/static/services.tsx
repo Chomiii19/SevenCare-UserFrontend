@@ -7,6 +7,7 @@ export default function Services() {
   const [openDrugTestModal, setOpenDrugTestModal] = useState(false);
   const [openEnrollmentModal, setOpenEnrollmentModal] = useState(false);
   const [openHealthCheckModal, setOpenHealthCheckModal] = useState(false);
+  const [openIndividualModal, setOpenIndividualModal] = useState(false);
 
   const handleServiceClick = (i: number) => {
     if (i === 0) setOpenConsultModal(true);
@@ -14,6 +15,7 @@ export default function Services() {
     if (i === 2) setOpenDrugTestModal(true);
     if (i === 3) setOpenEnrollmentModal(true);
     if (i === 4) setOpenHealthCheckModal(true);
+    if (i === 5) setOpenIndividualModal(true);
   };
 
   return (
@@ -36,6 +38,9 @@ export default function Services() {
 
       {openHealthCheckModal && (
         <HealthCheckModal setOpenHealthCheckModal={setOpenHealthCheckModal} />
+      )}
+      {openIndividualModal && (
+        <IndividualModal setOpenIndividualModal={setOpenIndividualModal} />
       )}
 
       <section className="flex flex-col flex-1 w-full justify-center items-center relative">
@@ -447,6 +452,53 @@ function HealthCheckModal({
 
           <div className="flex flex-col gap-3 mt-2">
             {services.slice(7, 13).map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}
+
+function IndividualModal({
+  setOpenIndividualModal,
+}: {
+  setOpenIndividualModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const services = [
+    "CHEST XRAY PA - 300.00",
+    "URINALYSIS - 85.00",
+    "FECALYSIS - 85.00",
+    "HEPA B SCREENING - 195.00",
+    "PHYSICAL EXAM (FIT TO WORK) - 550.00",
+    "CBC FOR EMPLOYMENT - 150.00",
+    "DRUG TEST - 300.00",
+    "HEPA A SCREENING - 400.00",
+  ];
+
+  return (
+    <div
+      onClick={() => setOpenIndividualModal(false)}
+      className="fixed inset-0 z-[100] flex justify-center items-center bg-black/40"
+    >
+      <article className="bg-white rounded-lg gap-4 p-8 flex flex-col items-center">
+        <h3 className="text-[#4206BA] font-bold text-lg">INDIVIDUAL PRICE:</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3 mt-2">
+            {services.slice(0, 4).map((service) => (
+              <div className="flex items-center gap-2">
+                <img src="/assets/icons/fill-check.png" alt="" />
+                <p>{service}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3 mt-2">
+            {services.slice(4, 8).map((service) => (
               <div className="flex items-center gap-2">
                 <img src="/assets/icons/fill-check.png" alt="" />
                 <p>{service}</p>
